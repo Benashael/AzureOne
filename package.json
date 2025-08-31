@@ -1,1 +1,9 @@
-
+{
+  "name": "azure-image-resizer",
+  "version": "1.0.0",
+  "main": "index.js",
+  "dependencies": {
+    "sharp": "^0.33.2",
+    "@azure/storage-blob": "^12.15.0"
+  }
+}
