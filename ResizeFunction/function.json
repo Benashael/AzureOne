@@ -4,14 +4,14 @@
       "name": "myBlob",
       "type": "blobTrigger",
       "direction": "in",
-      "path": "uploads/{name}",
+      "path": "images/{name}",
       "connection": "AzureWebJobsStorage"
     },
     {
       "name": "outputBlob",
       "type": "blob",
       "direction": "out",
-      "path": "processed/{name}",
+      "path": "resized/{name}",
       "connection": "AzureWebJobsStorage"
     }
   ],
