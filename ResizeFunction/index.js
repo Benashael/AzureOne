@@ -1,27 +1,21 @@
-const Jimp = require("jimp");
+const sharp = require("sharp");
 
 module.exports = async function (context, myBlob) {
-  context.log("Processing image with Jimp...");
+    context.log(`Processing blob: ${context.bindingData.name}, Size: ${myBlob.length} bytes`);
 
-  try {
-    const image = await Jimp.read(myBlob);
+    try {
+        // Resize the image (example: 200x200 thumbnail)
+        const resizedImage = await sharp(myBlob)
+            .resize(200, 200, { fit: "inside" })
+            .toFormat("jpeg")
+            .toBuffer();
 
-    // Resize to 200px wide (auto height)
-    image.resize(200, Jimp.AUTO);
+        // Save resized image to output binding (resized container)
+        context.bindings.outputBlob = resizedImage;
 
-    // Get buffer
-    const buffer = await image.getBufferAsync(Jimp.MIME_JPEG);
-
-    // Save resized image to output binding (thumbnails container)
-    const path = require('path');
-    const blobName = path.basename(context.bindingData.blobName);
-    context.bindings.outputBlob = buffer;
-    context.log("Buffer assigned to outputBlob. Attempted write to thumbnails container.");
-
-
-    context.log("Thumbnail created successfully!");
-  } catch (err) {
-    context.log.error("Error processing image with Jimp:", err);
-    throw err;
-  }
+        context.log("Image resized and uploaded successfully!");
+    } catch (err) {
+        context.log.error("Image resize failed:", err);
+        throw err;
+    }
 };
