@@ -15,4 +15,5 @@
       "connection": "AzureWebJobsStorage"
     }
   ]
+  "scriptFile": "index.js"
 }
