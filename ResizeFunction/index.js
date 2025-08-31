@@ -14,6 +14,8 @@ module.exports = async function (context, myBlob) {
 
     // Save resized image to output binding (thumbnails container)
     context.bindings.outputBlob = buffer;
+    context.log("Buffer assigned to outputBlob. Attempted write to thumbnails container.");
+
 
     context.log("Thumbnail created successfully!");
   } catch (err) {
