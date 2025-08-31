@@ -13,6 +13,8 @@ module.exports = async function (context, myBlob) {
     const buffer = await image.getBufferAsync(Jimp.MIME_JPEG);
 
     // Save resized image to output binding (thumbnails container)
+    const path = require('path');
+    const blobName = path.basename(context.bindingData.blobName);
     context.bindings.outputBlob = buffer;
     context.log("Buffer assigned to outputBlob. Attempted write to thumbnails container.");
 
