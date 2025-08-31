@@ -6,6 +6,13 @@
       "direction": "in",
       "path": "uploads/{blobName}",
       "connection": "AzureWebJobsStorage"
+    },
+    {
+      "name": "outputBlob",
+      "type": "blob",
+      "direction": "out",
+      "path": "thumbnails/{blobName}",
+      "connection": "AzureWebJobsStorage"
     }
   ]
 }
