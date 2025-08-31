@@ -1,9 +1,17 @@
 {
-  "name": "azure-image-resizer",
+  "name": "image-resizer-function",
   "version": "1.0.0",
+  "description": "Azure Function to resize images using Sharp",
   "main": "index.js",
+  "scripts": {
+    "start": "func start"
+  },
   "dependencies": {
-    "sharp": "^0.32.0",
-    "@azure/storage-blob": "^12.15.0"
-  }
+    "sharp": "^0.32.0"
+  },
+  "engines": {
+    "node": "18.x"
+  },
+  "author": "",
+  "license": "MIT"
 }
