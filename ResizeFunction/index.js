@@ -12,7 +12,7 @@ module.exports = async function (context, myBlob) {
             .toBuffer();
 
         // Send output to thumbnails/{blobName}
-        context.bindings.outputBlob = resized;
+        context.bindings.outputBlob = resizedImage;
 
         context.log(`✅ Resized image saved as thumbnails/${blobName}`);
     } catch (err) {
